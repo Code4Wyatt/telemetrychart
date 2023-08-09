@@ -10,3 +10,5 @@ const parseCsv = (csvFile, callback) => {
         }
     })
 }
+
+export default parseCsv;
