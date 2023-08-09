@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
 import parseCsv from './hooks/parseCsv';
-
-import csv from './assets/telemetry_data.csv';
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,18 +10,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-
 import { Line } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import csv from './assets/telemetry_data.csv';
 
 export const options = {
   responsive: true,
@@ -38,6 +26,16 @@ export const options = {
     },
   },
 };
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function App() {
   const [csvData, setCsvData] = useState([]);
@@ -89,8 +87,6 @@ function App() {
     data.datasets.push(dataset);
   });
 
-  console.log('formatted data', data);
-
   const getRandomColor = () => {
     let letters = '0123456789ABCDEF';
     let color = '#';
@@ -99,9 +95,6 @@ function App() {
     }
     return color;
   };
-
-  console.log('app', csvData);
-  console.log('chart data', chartData);
 
   return (
     <div className="App">
